@@ -5,18 +5,26 @@ import 'package:flutter/material.dart';
 class ElevatedBox extends StatelessWidget {
   final double elevation;
   final Color shadowcolor;
+  final Color containercolor;
+  final Color bordercolor;
   final double blur;
-  final double opacity;
+  final double decorationOpacity;
+  final double borderopacity;
   final Widget child;
   final double borderradius;
+  final double borderwidth;
   const ElevatedBox({
     Key? key,
     required this.elevation,
     required this.shadowcolor,
     required this.blur,
-    required this.opacity,
+    required this.decorationOpacity,
     required this.child,
     required this.borderradius,
+    required this.borderopacity,
+    required this.containercolor,
+    required this.bordercolor,
+    required this.borderwidth,
   }) : super(key: key);
 
   @override
@@ -33,10 +41,13 @@ class ElevatedBox extends StatelessWidget {
           ),
           child: Container(
             decoration: BoxDecoration(
-                color: Colors.white.withOpacity(opacity),
-                borderRadius: BorderRadius.all(Radius.circular(borderradius)),
-                border: Border.all(
-                    width: 1.5, color: Colors.white.withOpacity(0.2))),
+              color: containercolor.withOpacity(decorationOpacity),
+              borderRadius: BorderRadius.all(Radius.circular(borderradius)),
+              border: Border.all(
+                width: borderwidth,
+                color: bordercolor.withOpacity(borderopacity),
+              ),
+            ),
             child: child,
           ),
         ),
