@@ -3,8 +3,6 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 
 class ElevatedBox extends StatelessWidget {
-  final double elevation;
-  final Color shadowcolor;
   final Color containercolor;
   final Color bordercolor;
   final double blur;
@@ -15,8 +13,6 @@ class ElevatedBox extends StatelessWidget {
   final double borderwidth;
   const ElevatedBox({
     Key? key,
-    required this.elevation,
-    required this.shadowcolor,
     required this.blur,
     required this.decorationOpacity,
     required this.child,
@@ -29,29 +25,25 @@ class ElevatedBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Material(
-      color: Colors.transparent,
-      elevation: elevation,
-      shadowColor: shadowcolor,
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(borderradius),
-        child: BackdropFilter(
-          filter: ImageFilter.blur(
-            sigmaX: blur,
-            sigmaY: blur,
-          ),
-          child: Container(
-            decoration: BoxDecoration(
-              color: containercolor.withOpacity(decorationOpacity),
-              borderRadius: BorderRadius.all(Radius.circular(borderradius)),
-              border: Border.all(
-                width: borderwidth,
-                color: bordercolor.withOpacity(borderopacity),
-              ),
-            ),
-            child: child,
-          ),
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(borderradius),
+      child: BackdropFilter(
+        filter: ImageFilter.blur(
+          sigmaX: blur,
+          sigmaY: blur,
         ),
-      );
+        child: Container(
+          decoration: BoxDecoration(
+            color: containercolor.withOpacity(decorationOpacity),
+            borderRadius: BorderRadius.all(Radius.circular(borderradius)),
+            border: Border.all(
+              width: borderwidth,
+              color: bordercolor.withOpacity(borderopacity),
+            ),
+          ),
+          child: child,
+        ),
+      ),
+    );
   }
 }
