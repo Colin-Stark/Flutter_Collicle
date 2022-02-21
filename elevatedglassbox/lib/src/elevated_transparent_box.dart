@@ -30,6 +30,7 @@ class ElevatedBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
+      color: Colors.transparent,
       elevation: elevation,
       shadowColor: shadowcolor,
       child: ClipRRect(
@@ -51,7 +52,6 @@ class ElevatedBox extends StatelessWidget {
             child: child,
           ),
         ),
-      ),
-    );
+      );
   }
 }
